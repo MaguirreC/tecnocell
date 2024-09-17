@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Orden extends Model
 {
     use HasFactory;
+    protected $fillable=['id_cliente','id_dispositivo','id_tecnico','fecha'];
 }

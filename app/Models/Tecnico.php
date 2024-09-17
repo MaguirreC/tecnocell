@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Tecnico extends Model
 {
     use HasFactory;
+    protected $fillable=['nombre','apellido','telefono','correo','id_cargo'];
 }

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Inventario extends Model
 {
     use HasFactory;
+    protected $fillable=['fecha_compra','fecha_venta','id_repuesto'];
 }
+

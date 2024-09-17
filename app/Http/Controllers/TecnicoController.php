@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tecnico;
 
 class TecnicoController extends Controller
 {
     //
     public function save(Request $request){
+        $tecnico=Tecnico::create([
+            'nombre'=>$request->nombre,
+                'apellido'=>$request->apellido,
+                'telefono'=>$request->telefono,
+                'id_cargo'=>$request->id_cargo,
+                'correo'=>$request->correo,
+        ]);
 
         return response()->json([
             'status' => '200',
@@ -15,6 +23,7 @@ class TecnicoController extends Controller
         ]);
     }
     public function getData(Request $request){
+        $tecnico=Tecnico::all();
 
         return response()->json([
             'status' => '200',
@@ -22,6 +31,15 @@ class TecnicoController extends Controller
         ]);
     }
     public function update(Request $request){
+        $tecnico=Tecnico::findOrfail($request->id);
+        $tecnico->update([
+            'nombre'=>$request->nombre,
+                'apellido'=>$request->apellido,
+                'telefono'=>$request->telefono,
+                'id_cargo'=>$request->id_cargo,
+                'correo'=>$request->correo,
+
+        ]);
 
         return response()->json([
             'status' => '200',
@@ -29,6 +47,8 @@ class TecnicoController extends Controller
         ]);
     }
     public function delete(Request $request){
+        $tecnico=Tecnico::findOrfail($request->id);
+        $tecnico->delete();
 
         return response()->json([
             'status' => '200',
