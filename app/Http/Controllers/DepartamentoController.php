@@ -55,4 +55,13 @@ class DepartamentoController extends Controller
             'message' => 'eliminadp con exito',
         ]);
     }
+    public function getDataById(Request $request){
+        
+        $departamento=Departamento::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $departamento,
+        ]);
+    }
 }

@@ -35,6 +35,7 @@ class ClienteController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'data obtenida',
+            'data'=> $cliente
         ]);
     }
     public function update(Request $request){
@@ -52,6 +53,7 @@ class ClienteController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'actualizado con exito',
+            'data'
         ]);
     }
     public function delete(Request $request){
@@ -64,5 +66,13 @@ class ClienteController extends Controller
             'message' => 'eliminadp con exito',
         ]);
     }
-   
+    public function getDataById(Request $request){
+        
+        $cliente=Cliente::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $cliente,
+        ]);
+    }
 }

@@ -28,6 +28,7 @@ class CiudadController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'data obtenida',
+            'data'=> $ciudad
         ]);
     }
     public function update(Request $request){
@@ -53,6 +54,15 @@ class CiudadController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'eliminadp con exito',
+        ]);
+    }
+    public function getDataById(Request $request){
+        
+        $ciudad=Ciudad::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $ciudad,
         ]);
     }
 }

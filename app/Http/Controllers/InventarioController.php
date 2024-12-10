@@ -9,6 +9,7 @@ class InventarioController extends Controller
     //
     public function save(Request $request){
         $inventario=Inventario::create([
+            'nombre'=>$request->nombre,
             'fecha_compra'=>$request->fecha_compra,
             'fecha_venta'=>$request->fecha_venta,
              'id_repuesto'=>$request->id_repuesto
@@ -30,6 +31,7 @@ class InventarioController extends Controller
         $inventario=Inventario::findOrFail($request->id);
 
         $inventario->update([
+            'nombre'=>$request->nombre,
             'fecha_compra'=>$request->fecha_compra,
             'fecha_venta'=>$request->fecha_venta,
              'id_repuesto'=>$request->id_repuesto

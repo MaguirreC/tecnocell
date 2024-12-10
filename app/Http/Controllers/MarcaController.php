@@ -23,6 +23,7 @@ class MarcaController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'data obtenida',
+            'data'=> $marca
         ]);
     }
     public function update(Request $request){
@@ -45,6 +46,15 @@ class MarcaController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'eliminadp con exito',
+        ]);
+    }
+    public function getDataById(Request $request){
+        
+        $marca=Marca::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $marca,
         ]);
     }
 }

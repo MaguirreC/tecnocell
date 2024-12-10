@@ -14,6 +14,7 @@ use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TecnicoController;
 use App\Http\Controllers\CargoController;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,18 +31,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::get('/cargos/datos', [CargoController::class, 'getData']);
 Route::controller(CargoController::class)->group(function(){
     Route::get('/cargos/datos', 'getData');
     Route::put('/cargos/update', 'update');
     Route::delete('/cargos/delete', 'delete');
     Route::post('/cargos/save', 'save');
+    Route::get('/cargos/datosById', 'getDataById');
 });
 
 
 Route::controller(CiudadController::class)->group(function(){
     Route::get('/ciudades/datos', 'getData');
     Route::put('/ciudades/update', 'update');
+    Route::get('/ciudades/datosById', 'getDataById');
     Route::delete('/ciudades/delete', 'delete');
     Route::post('/ciudades/save', 'save');
 });
@@ -51,11 +53,13 @@ Route::controller(ClienteController::class)->group(function(){
     Route::put('/clientes/update', 'update');
     Route::delete('/clientes/delete', 'delete');
     Route::post('/clientes/save', 'save');
+    Route::get('/clientes/datosById', 'getDataById');
 });
 Route::controller(DepartamentoController::class)->group(function(){
     Route::get('/departamentos/datos', 'getData');
     Route::put('/departamentos/update', 'update');
     Route::delete('/departamentos/delete', 'delete');
+    Route::get('/departamentos/datosById', 'getDataById');
     Route::post('/departamentos/save', 'save');
 });
 
@@ -70,6 +74,7 @@ Route::controller(DispositivoController::class)->group(function(){
     Route::put('/dispositivos/update', 'update');
     Route::delete('/dispositivos/delete', 'delete');
     Route::post('/dispositivos/save', 'save');
+    Route::get('/dispositivos/datosById', 'getDataById');
 });
 Route::controller(FacturaController::class)->group(function(){
     Route::get('/facturas/datos', 'getData');
@@ -88,18 +93,21 @@ Route::controller(MarcaController::class)->group(function(){
     Route::put('/marca/update', 'update');
     Route::delete('/marca/delete', 'delete');
     Route::post('/marca/save', 'save');
+    Route::get('/marca/datosById', 'getDataById');
 });
 Route::controller(OrdenController::class)->group(function(){
     Route::get('/orden/datos', 'getData');
     Route::put('/orden/update', 'update');
     Route::delete('/orden/delete', 'delete');
     Route::post('/orden/save', 'save');
+    Route::get('/orden/datosById', 'getDataById');
 });
 Route::controller(RepuestoController::class)->group(function(){
     Route::get('/repuesto/datos', 'getData');
     Route::put('/repuesto/update', 'update');
     Route::delete('/repuesto/delete', 'delete');
     Route::post('/repuesto/save', 'save');
+    Route::get('/repuesto/datosById', 'getDataById');
 });
 Route::controller(ServicioController::class)->group(function(){
     Route::get('/servicio/datos', 'getData');
@@ -109,6 +117,7 @@ Route::controller(ServicioController::class)->group(function(){
 });
 Route::controller(TecnicoController::class)->group(function(){
     Route::get('/tecnico/datos', 'getData');
+    Route::get('/tecnico/datosById', 'getDataById');
     Route::put('/tecnico/update', 'update');
     Route::delete('/tecnico/delete', 'delete');
     Route::post('/tecnico/save', 'save');

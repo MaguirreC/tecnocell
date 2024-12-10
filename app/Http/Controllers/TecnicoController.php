@@ -23,11 +23,21 @@ class TecnicoController extends Controller
         ]);
     }
     public function getData(Request $request){
+        
         $tecnico=Tecnico::all();
-
         return response()->json([
             'status' => '200',
             'message' => 'data obtenida',
+            'data'=> $tecnico,
+        ]);
+    }
+    public function getDataById(Request $request){
+        
+        $tecnico=Tecnico::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $tecnico,
         ]);
     }
     public function update(Request $request){

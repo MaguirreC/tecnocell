@@ -11,6 +11,7 @@ class OrdenController extends Controller
     public function save(Request $request){
         $orden=Orden::create([
             'id_cliente'=>$request->id_cliente,
+            'descripcion'=>$request->descripcion,
             'id_dispositivo'=>$request->id_dispositivo,
             'id_tecnico'=>$request->id_tecnico,
             'fecha'=>$request->fecha
@@ -27,12 +28,14 @@ class OrdenController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'data obtenida',
+            'data'=> $orden
         ]);
     }
     public function update(Request $request){
         $orden=Orden::findOrFail($request->id);
         $orden->update([
             'id_cliente'=>$request->id_cliente,
+            'descripcion'=>$request->descripcion,
             'id_dispositivo'=>$request->id_dispositivo,
             'id_tecnico'=>$request->id_tecnico,
             'fecha'=>$request->fecha
@@ -51,6 +54,15 @@ class OrdenController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'eliminadp con exito',
+        ]);
+    }
+    public function getDataById(Request $request){
+        
+        $orden=Orden::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $orden,
         ]);
     }
 }

@@ -13,7 +13,6 @@ class CargoController extends Controller
 
         $cargo=Cargo::create([
             'nombre'=>$request->nombre,
-            'id_departamento'=> $request->id_departamento,
 
         ]);
 
@@ -57,6 +56,15 @@ class CargoController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'eliminadp con exito',
+        ]);
+    }
+    public function getDataById(Request $request){
+        
+        $cargo=Cargo::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $cargo,
         ]);
     }
 }

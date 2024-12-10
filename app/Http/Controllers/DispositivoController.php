@@ -32,6 +32,7 @@ class DispositivoController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'data obtenida',
+            'data'=> $dispositivo
         ]);
     }
     public function update(Request $request){
@@ -58,6 +59,15 @@ class DispositivoController extends Controller
         return response()->json([
             'status' => '200',
             'message' => 'eliminadp con exito',
+        ]);
+    }
+    public function getDataById(Request $request){
+        
+        $dispositivo=Dispositivo::where('id',$request->id)->get();
+        return response()->json([
+            'status' => '200',
+            'message' => 'data obtenida',
+            'data'=> $dispositivo,
         ]);
     }
 }
