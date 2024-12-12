@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DescripcionServicio extends Model
 {
     use HasFactory;
+
+    protected $fillable=['precio','id_orden','id_servicio'];
 }

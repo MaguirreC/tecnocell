@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Servicio;
 
 class ServicioController extends Controller
 {
     //
     public function save(Request $request){
+        $servicio=Servicio::create([
+            'descripcion'=>$request->descripcion,
+            'precio'=>$request->precio,
+        ]);
 
         return response()->json([
             'status' => '200',
@@ -15,6 +20,7 @@ class ServicioController extends Controller
         ]);
     }
     public function getData(Request $request){
+        $servicio=Servicio::all();
 
         return response()->json([
             'status' => '200',
@@ -22,6 +28,11 @@ class ServicioController extends Controller
         ]);
     }
     public function update(Request $request){
+        $servicio=Servicio::findOrFail($request->id);
+        $servicio->update([
+            'descripcion'=>$request->descripcion,
+            'precio'=>$request->precio,
+        ]);
 
         return response()->json([
             'status' => '200',
@@ -29,6 +40,8 @@ class ServicioController extends Controller
         ]);
     }
     public function delete(Request $request){
+        $servicio=Servicio::findOrFail($request->id);
+        $servicio->delete();
 
         return response()->json([
             'status' => '200',
